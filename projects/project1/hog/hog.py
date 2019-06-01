@@ -41,11 +41,52 @@ def roll_dice(num_rolls, dice=six_sided):
 def free_bacon(opponent_score):
     """Return the points scored from rolling 0 dice (Free Bacon)."""
     # BEGIN PROBLEM 2
-    "*** REPLACE THIS LINE ***"
-    # END PROBLEM 2
+    if len(opponent_score)<2:
+        return opponent_score+1
+    else:
+        max([i for i in opponent_score])
 
 
-# Write your prime functions here!
+def is_prime(num):
+    """ Return True if the number is prime otherwise return False
+    >>> is_prime(13)
+    True
+    >>> is_prime(11)
+    True
+    >>> is_prime(1)
+    False
+    >>> is_prime(15)
+    False
+    """
+    assert num>=1
+    k=2
+    if num==1:
+        return False
+    else:
+        while k<num:
+            if num%k==0:
+                return False
+            k+=1
+        return True
+    
+def next_prime(num):
+    """ Return the next prime based on the current prime
+    >>> next_prime(11)
+    13
+    >>> next_prime(5)
+    7
+    >>> next_prime(7)
+    11
+    """
+    controll=True
+    while controll:
+        num+=1
+        if is_prime(num):
+            controll=False
+            return num
+        
+            
+    
 
 
 def take_turn(num_rolls, opponent_score, dice=six_sided):
