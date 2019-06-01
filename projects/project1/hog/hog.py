@@ -41,10 +41,12 @@ def roll_dice(num_rolls, dice=six_sided):
 def free_bacon(opponent_score):
     """Return the points scored from rolling 0 dice (Free Bacon)."""
     # BEGIN PROBLEM 2
-    if len(opponent_score)<2:
+    result=opponent_score//10
+    if result==0:
         return opponent_score+1
     else:
-        max([i for i in opponent_score])
+        rest,l=opponent_score//10, opponent_score%10
+        return max(rest,l)+1
 
 
 def is_prime(num):
@@ -104,7 +106,15 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     assert opponent_score < 100, 'The game should be over.'
     # BEGIN PROBLEM 2
-    "*** REPLACE THIS LINE ***"
+    if num_rolls==0:
+        return free_bacon(opponent_score)
+    else:
+        result=roll_dice(num_rolls, dice)
+        if is_prime(result):
+            return next_prime(result)
+        else:
+            return min(result,25-num_rolls)
+        
     # END PROBLEM 2
 
 
