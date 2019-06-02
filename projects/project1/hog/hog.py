@@ -107,7 +107,11 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     assert opponent_score < 100, 'The game should be over.'
     # BEGIN PROBLEM 2
     if num_rolls==0:
-        return free_bacon(opponent_score)
+        result=free_bacon(opponent_score)
+        if is_prime(result):
+            return next_prime(result)
+        else:
+            return result
     else:
         result=roll_dice(num_rolls, dice)
         if is_prime(result):
