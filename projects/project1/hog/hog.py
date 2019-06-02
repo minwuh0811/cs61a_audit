@@ -126,8 +126,12 @@ def reroll(dice):
     """Return dice that return even outcomes and re-roll odd outcomes of DICE."""
     def rerolled():
         # BEGIN PROBLEM 3
-        "*** REPLACE THIS LINE ***"
-        return dice()  # Replace this statement
+        num=dice()
+        result=num%2
+        if result==0:
+            return num
+        else:
+            return dice()  # Replace this statement
         # END PROBLEM 3
     return rerolled
 
